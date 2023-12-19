@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"reflect"
 )
 
 var pl = fmt.Println
@@ -23,18 +24,31 @@ var pl = fmt.Println
 
 // Variables
 
-func main() {
-	// Format: var name type
-	// must be small case for name
+// func main() {
+// 	// Format: var name type
+// 	// must be small case for name
 
-	//Variables are mutable by default
+// 	//Variables are mutable by default
 
-	//type declaration
-	var vName string = "John"
+// 	//type declaration
+// 	var vName string = "John"
 
-	//dynamic declaration
-	var v1, v2 = 1.2, 2.4
-	var v3 = "Hello"
+// 	//dynamic declaration
+// 	var v1, v2 = 1.2, 2.4
+// 	var v3 = "Hello"
 
-	v4 := "World"
-}
+// 	v4 := "World"
+// }
+
+//Data types
+
+// func main() {
+// 	// int, float64, bool, string, rune
+// 	// Default type: 0, 0.0, false, "",
+
+// 	pl(reflect.TypeOf(25))
+// 	pl(reflect.TypeOf(3.14))
+// 	pl(reflect.TypeOf(true))
+// 	pl(reflect.TypeOf("Hello"))
+// 	pl(reflect.TypeOf("😌"))
+// }
