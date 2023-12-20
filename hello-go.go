@@ -242,3 +242,28 @@ func formatted() {
 	sp1 := fmt.Sprintf("%9.f\n", 3.141592)
 	pl(sp1)
 }
+
+//Loop
+
+func loop() {
+	// for initialization; condition; postStatement {BODY}
+	// Print numbers 1 through 5
+	for x := 1; x <= 5; x++ {
+		pl(x)
+	}
+	// Do the opposite
+	for x := 5; x >= 1; x-- {
+		pl(x)
+	}
+
+	// x is out of the scope of the for loop so it doesn't exist
+	// pl("x :", x)
+
+	// For is used to create while loops as well
+	fX := 0
+	for fX < 5 {
+		pl(fX)
+		fX++
+	}
+
+}
