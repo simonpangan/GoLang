@@ -8,6 +8,7 @@ import (
 	"reflect"
 	"strconv"
 	"strings"
+	"time"
 	"unicode/utf8"
 )
 
@@ -147,4 +148,12 @@ func rune() {
 	for i, runeVal := range rStr {
 		fmt.Printf("%d : %#U : %c\n", i, runeVal, runeVal)
 	}
+}
+
+//Time
+
+func oras() {
+	now := time.Now()
+	pl(now.Year(), now.Month(), now.Day(), now.Weekday())
+	pl(now.Hour(), now.Minute(), now.Second())
 }
