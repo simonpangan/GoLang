@@ -302,3 +302,17 @@ func while() {
 		}
 	}
 }
+
+//array loop
+
+func arrayLoop() {
+	// Cycle through an array with range
+	// We don't need the index so we ignore it
+	// with the blank identifier
+
+	aNums := []int{1, 2, 3}
+	for _, num := range aNums {
+		pl(num)
+	}
+
+}
