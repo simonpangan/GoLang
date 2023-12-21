@@ -220,7 +220,7 @@ func getSumGen[T MyConstraint](x T, y T) T {
 
 // ----- STRUCTS -----
 
-func main() {
+func structss() {
 	// Structs allow you to store values with many
 	// different data types structure
 
@@ -240,10 +240,26 @@ func main() {
 	sS := customer{"Sally Smith", "123 Main", 0.0}
 	pl("Name :", sS.name)
 
-
 	// Structs with functions
 	rect1 := rectangle{10.0, 15.0}
 	pl("Rect Area :", rect1.Area())
+
+	// Go doesn't support inheritance, but it does
+	// support composition by embedding a struct
+	// in another
+	con1 := contact{
+		"James",
+		"Wang",
+		"555-1212",
+	}
+
+	bus1 := business{
+		"ABC Plumbing",
+		"234 North St",
+		con1,
+	}
+
+	bus1.info()
 }
 
 type customer struct {
@@ -268,4 +284,21 @@ type rectangle struct {
 
 func (r rectangle) Area() float64 {
 	return r.length * r.height
+}
+
+// Struct composition : Putting a struct in another
+type contact struct {
+	fName string
+	lName string
+	phone string
+}
+
+type business struct {
+	name    string
+	address string
+	contact
+}
+
+func (b business) info() {
+	fmt.Printf("Contact at %s is %s %s\n", b.name, b.contact.fName, b.contact.lName)
 }
