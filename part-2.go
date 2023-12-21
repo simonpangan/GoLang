@@ -167,7 +167,7 @@ func maps() {
 	// Define with map literal
 	superPets := map[int]string{1: "Krypto",
 		2: "Bat Hound"}
-		
+
 	// Get value with key (Use %v with Printf)
 	fmt.Printf("Batman is %v\n", heroes["Batman"])
 
@@ -186,4 +186,34 @@ func maps() {
 
 	// Delete a key value
 	delete(heroes, "The Flash")
+}
+
+// ----- GENERICS -----
+
+func generics() {
+	// We can specify the data type to be used at a
+	// later time with generics
+	// It is mainly used when we want to create
+	// functions that can work with
+	// multiple data types
+	pl("5 + 4 =", getSumGen(5, 4))
+	pl("5.6 + 4.7 =", getSumGen(5.6, 4.7))
+}
+
+// ----- FUNCTION THAT EXCEPTS GENERICS -----
+// This generic type parameter is capital, between
+// square brackets and has a rule for what data
+// it will except called a constraint
+// any : anything
+// comparable : Anything that supports ==
+// More Constraints : pkg.go.dev/golang.org/x/exp/constraints
+
+// You can also define what is excepted like this
+// Define that my generic must be an int or float64
+type MyConstraint interface {
+	int | float64
+}
+
+func getSumGen[T MyConstraint](x T, y T) T {
+	return x + y
 }
