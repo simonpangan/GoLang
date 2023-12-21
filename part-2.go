@@ -217,3 +217,55 @@ type MyConstraint interface {
 func getSumGen[T MyConstraint](x T, y T) T {
 	return x + y
 }
+
+// ----- STRUCTS -----
+
+func main() {
+	// Structs allow you to store values with many
+	// different data types structure
+
+	// Add values
+	var tS customer
+	tS.name = "Tom Smith"
+	tS.address = "5 Main St"
+	tS.bal = 234.56
+
+	// Pass to function as values
+	getCustInfo(tS)
+	// or as reference
+	newCustAdd(&tS, "123 South st")
+	pl("Address :", tS.address)
+
+	// Create a struct literal
+	sS := customer{"Sally Smith", "123 Main", 0.0}
+	pl("Name :", sS.name)
+
+
+	// Structs with functions
+	rect1 := rectangle{10.0, 15.0}
+	pl("Rect Area :", rect1.Area())
+}
+
+type customer struct {
+	name    string
+	address string
+	bal     float64
+}
+
+// Customer passed as values
+func getCustInfo(c customer) {
+	fmt.Printf("%s owes us %.2f\n", c.name, c.bal)
+}
+
+func newCustAdd(c *customer, address string) {
+	c.address = address
+}
+
+// This struct has a function associated
+type rectangle struct {
+	length, height float64
+}
+
+func (r rectangle) Area() float64 {
+	return r.length * r.height
+}
