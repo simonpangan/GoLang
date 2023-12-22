@@ -357,3 +357,14 @@ func (tsp Tsp) ToMLs() ML {
 func (tbs TBs) ToMLs() ML {
 	return ML(tbs * 14.79)
 }
+
+// ----- PROTECTING DATA -----
+
+func main() {
+	// We want to protect our data from receiving
+	// bad values by moving our date struct
+	// to another package using encapsulation
+	// We'll use mypackage like before
+
+	//EX: go to mypackage/main.go line 22
+}
