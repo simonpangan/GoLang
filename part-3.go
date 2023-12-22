@@ -162,3 +162,24 @@ func useFunc(f func(int, int) int, x, y int) {
 func sumVals(x, y int) int {
 	return x + y
 }
+
+// ----- RECURSION -----
+
+func recursion() {
+// Recursion occurs when a function calls itself
+	// There must be a condition that ends this
+	// Finding a factorial is commonly used
+	pl("Factorial 4 =", factorial(4))
+	// 1st : result = 4 * factorial(3) = 4 * 6 = 24
+	// 2nd : result = 3 * factorial(2) = 3 * 2 = 6
+	// 3rd : result = 2 * factorial(1) = 2 * 1 = 2
+}
+
+func factorial(num int) int {
+	// This condition ends calling functions
+	if num == 0 {
+		return 1
+	}
+	
+	return num * factorial(num-1)
+}
