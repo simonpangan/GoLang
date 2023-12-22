@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sync"
 	"time"
 )
 
@@ -45,6 +46,7 @@ func printTo10() {
 }
 
 // ----- CHANNELS -----
+// https://www.youtube.com/watch?v=B9uR2gLM80E
 
 func channels() {
 	// You can have goroutines communicate by
@@ -83,4 +85,47 @@ func nums2(channel chan int) {
 	channel <- 4
 	channel <- 5
 	channel <- 6
+}
+
+// Using locks to protect data from being
+// accessed by more than one user at a time
+// Locks are another option when you don't
+// have to pass data
+
+func locks() {
+	var acct Account
+	acct.balance = 100
+	pl("Balance :", acct.GetBalance())
+
+	for i := 0; i < 12; i++ {
+		go acct.Withdraw(10)
+	}
+	time.Sleep(2 * time.Second)
+}
+
+// ----- BANK ACCOUNT EXAMPLE -----
+// Here I'll simulate customers accessing a
+// bank account and lock out customers to
+// allow for individual access
+type Account struct {
+	balance int
+	lock    sync.Mutex // Mutual exclusion which means can only be access at one time
+}
+
+func (a *Account) GetBalance() int {
+	a.lock.Lock()
+	defer a.lock.Unlock() // unlock after the function is done
+	return a.balance
+}
+
+func (a *Account) Withdraw(v int) {
+	a.lock.Lock()
+	defer a.lock.Unlock()
+	if v > a.balance {
+		pl("Not enough money in account")
+	} else {
+		fmt.Printf("%d withdrawn : Balance : %d\n",
+			v, a.balance)
+		a.balance -= v
+	}
 }
