@@ -223,3 +223,15 @@ func regex() {
 	// Replace all matches with Dog
 	pl(r.ReplaceAllString(reStr2, "Dog"))
 }
+
+
+// ----- AUTOMATED TESTING ----
+func test() {
+	// Automated tests make sure your program still
+	// works while you change the code
+	// Create app2 directory with testemail.go
+	// cd app2
+	// Create testemail_test.go
+	// Type: go mod init app2
+	// Run Tests : go test -v
+}
